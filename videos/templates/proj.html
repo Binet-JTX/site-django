@@ -1,0 +1,468 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block body %}
+
+
+{% if proj %}
+
+{% load app_filters %}
+
+<div style="margin-top:0;display:table">
+<div style="margin-top:0;display:block">
+<div style="margin-top:0;display:table-cell;vertical-align:top;padding-right:10px;">
+
+
+<video id="video" width="720px" height="405px" controls></video>
+
+	<div class="titre_proj_nouv">
+		{{ proj.titre }}
+	</div>
+
+	<div class="titre_et_vues" id="titre_et_vues_id">
+
+	  <div id="titre_en_cours" class="titre_et_vues_titre"> Titre de la vidéo en cours</div>
+
+      <a onclick="next()" href="#" id="titre_video_suivante" class="proj_vid_suiv">Titre de la vidéo suivante
+			<img src={% static "admin/img/droite.png" %} alt="caca2" class='proj_vid_suiv_img'>
+		</a>
+
+	  <div class="bandeau_haut">
+
+	    <div class="cellule_num_jtx">
+	      <div class="numero_jtx">
+	        <div class="numero_jtx_text">
+                {{ proj | short_promo }}
+	        </div>
+	      </div>
+	    </div>
+
+	    <div id="proj_auteurs" class="titre_et_vues_auteurs">JTX 20{{ proj | short_promo }}</div>
+	    <div class="titre_et_vues_info">
+				{% if proj.category.titre.lower == 'proj en .k' %}
+					<a href="{% url 'category' proj.category.id 1 %}" class="titre_et_vues_info_cat_proj">{{proj.category.titre}}</a>
+				{% elif proj.category.titre.lower == 'amphi binets' %}
+					<a href="{% url 'category' proj.category.id 1 %}" class="titre_et_vues_info_cat_amphi">{{proj.category.titre}}</a>
+				{% elif proj.category.titre.lower == 'semaine internationale' %}
+					<a href="{% url 'category' proj.category.id 1 %}" class="titre_et_vues_info_cat_semaine">{{proj.category.titre}}</a>
+				{% elif proj.category.titre.lower == "coupe de l'x" %}
+					<a href="{% url 'category' proj.category.id 1 %}" class="titre_et_vues_info_cat_coupe">{{proj.category.titre}}</a>
+				{% endif %}
+			</div>
+
+	    <div class="nb_vues">
+			 {{ proj.views }} vues
+		 	</div>
+
+	  </div>
+
+	  <hr>
+
+		<div class="titre_et_vues_vues_et_jaime">
+	    <div class="titre_et_vues_vues_et_jaime_nb_jaime" id='proj_nb_jaime'>
+	       {{ nb_jaimes }}
+	    </div>
+
+			<div class="titre_et_vues_vues_et_jaime_vues_jaime">
+
+				{% if request.user.is_authenticated %}
+				<span id="bouton_jaime">
+				{% if favorite %}
+				    <a onclick="like(0,'{% url 'remove_favorite_proj' proj_id=proj.id home=0 %}')" class="lien_jaime_rouge">
+							<div class="titre_et_vues_vues_et_jaime_bouton_jaime_rouge">
+							Je n'aime plus
+							</div>
+						</a>
+				{% else %}
+
+				    <a onclick="like(1,'{% url 'add_favorite_proj' proj.id %}')" class="lien_jaime_vert">
+							<div class="titre_et_vues_vues_et_jaime_bouton_jaime_vert">
+								J'aime
+	            </div>
+						</a>
+				{% endif %}
+				</span>
+				{% endif %}
+
+				</div>
+		</div>
+
+		{% if request.user.is_authenticated %}
+		<span id='bouton_epingle'>
+	  {% if epingle %}
+	  <a onclick='epingle(0,"{% url "remove_epingle_proj" proj_id=proj.id home=0 %}")' class="link_epingler">
+	    <img src={% static "admin/img/pin.png" %} alt="pin" class="bouton_deja_epingler">
+	    </a>
+	    <div class="text_epingler">
+	      désépingler
+	    </div>
+
+	    {% else %}
+	    <a onclick='epingle(1,"{% url "add_epingle_proj" proj.id %}")'  class="link_epingler">
+	    <img src={% static "admin/img/pin.png" %} alt="pin" class="bouton_epingler">
+	    </a>
+	    <div class="text_epingler">
+	      épingler
+	    </div>
+	    {% endif %}
+			</span>
+	    {% endif %}
+
+
+
+		<div class="titre_et_vues_tags">
+		Tags :
+		{% for r in video.relation_tag_set.all %}
+			<a class="tag" href="{% url 'tag' r.tag.id 1 %}">{{ r.tag.titre }}</a>
+		{% endfor %}
+	  </div>
+
+	</div>
+
+
+
+  {% if can_proj %}
+  <div class="editer_contenu">
+      <span class="trait_edit">&boxh;</span><a href="{% url 'edit_proj' proj.id %}" class="editer_contenu_lien" > Éditer la proj </a> <span class="trait_edit">&boxh;</span>
+  </div>
+
+{% endif %}
+
+
+
+
+<div class="description_video">
+	<div class="titre_et_vues_date">
+		Ajoutée le {{ proj.date|date:"d/m/Y" }}
+	</div>
+
+	<div id="bouton_affiche_liste" onclick="affiche_liste()">
+		  Afficher les vidéos
+	</div>
+
+	<hr>
+
+
+
+  <div class="description_video_proj" id="ls_vid">
+    <table id="proj_elements" class="table  ">
+      <thead>
+        <tr>
+          <th>Ordre</th>
+          <th>Nom du clip</th>
+          <th>Durée</th>
+          <th>Lien solo</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for r in proj.relation_proj_set.all %}
+      <tr>
+        <td> {{r.id}} </td>
+        <td> <a  onclick="launch({{forloop.counter}})" id="video_{{ r.video.id }}" class="proj_video_titre">{{ r.video.titre }}</a></td>
+        <td> {{ r.video|duration }}</td>
+        <!-- proj_video_voir -->
+  			<td><a href="{% url 'video' r.video.id %}" class="">Voir en solo</a></td>
+  		</tr>
+      {% endfor %}
+
+      </tbody>
+
+    </table>
+      
+    
+  </div>
+</div>
+
+
+
+<div class="commentaires_video" id="commentaires_video_id">
+  <div class="commentaires_video_titre">
+    Commentaires
+  </div>
+
+  <div class="commentaires_video_faire">
+    {% if request.user.is_authenticated %}
+
+    <form action="{% url 'comment_proj' proj.id %}" method="post">
+    {% csrf_token %}
+    <textarea name="comment" rows="3" id="comment"></textarea>
+    <input type="submit" value="Poster" id='bouton_comment'/>
+    </form>
+
+    {% endif %}
+  </div>
+
+
+  {% for r in proj.relation_comment_proj_set.all%}
+      <hr>
+			<div class="commentaires_supprimer_div">
+        {% if request.user.is_authenticated and request.user == r.author %}
+            <a href="{% url 'delete_comment_proj' r.id %}">
+                  <img src={% static "admin/img/icon-deletelink.svg" %} alt="Supprimer" class='commentaires_supprimer'>
+            </a>
+        {% endif %}
+      </div>
+      <div class="commentaire_nom_date">
+        <div class="commentaires_nom">
+          {{ r.author.username }}
+        </div>
+          <div class="commentaires_date">
+          le 04/02/2017 à 15h25
+          </div>
+          <div class="cellule_com_jaime">
+
+            <div class="commentaires_jaime">
+
+              <div class="petit_titre_et_vues_vues_et_jaime_nb_jaime">
+                  {{r.like_comment_proj_set.count}}
+              </div>
+
+              <div class="petit_titre_et_vues_vues_et_jaime_vues_jaime">
+
+            {% if request.user.is_authenticated %}
+
+                {% if r.like_comment_proj_set|exists_user:request.user %}
+
+                    <a href="{% url 'unlike_comment_proj' r.id %}" class="petit_lien_jaime_rouge">
+                      <div class="petit_titre_et_vues_vues_et_jaime_bouton_jaime_rouge">
+                      Je n'aime plus
+                      </div>
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'like_comment_proj' r.id  %}" class="petit_lien_jaime_vert">
+                      <div class="petit_titre_et_vues_vues_et_jaime_bouton_jaime_vert">
+                        J'aime
+                      </div>
+                    </a>
+
+                {% endif %}
+
+            {% endif %}
+
+                </div>
+            </div>
+
+
+
+
+          </div>
+
+      </div>
+
+      <div class="commentaires_commentaires">
+        {{ r.comment }}
+      </div>
+  {% endfor %}
+</div>
+
+
+</div>
+
+<div class="suggestion" >
+  <div class="container_suggestion">
+		{% load app_filters %}
+    <p class="suggestion_titre">À suivre</p>
+
+        <div class="liste_videos" >
+            {% for v in suggestions %}
+
+            <div class="bloc_video_suggestion">
+              <a href="{% url 'proj' v.id %}" class="lien_suggestion_video">
+              <figure class="figure_suggestions">
+                  <img class="img_vid_suggestions" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Aspect_ratio_16_9_example.jpg	"/>
+                  <figcaption class="legende_vid_duree">
+                      {{v|duration_proj}}
+                  </figcaption>
+
+              </figure>
+              </a>
+              <a href="{% url 'proj' v.id %}" class="lien_suggestion_bloc">
+              <div class="bloc_legende_suggestions">
+
+                    <div class="legende_vid_titre_suggestions">
+                        {{v.titre|short}}
+                    </div>
+
+
+                <div class="legende_vid_auteur">
+
+                      JTX 20{{ v | short_promo }}
+
+                </div>
+                <div class="legende_vid_auteur">
+                        {{v.views}}
+                       vues
+                       <span class="petit_point">&#9679;</span>
+
+                        {{ v.date|date:"d/m/Y" }}
+                </div>
+              </div>
+                </a>
+            </div>
+
+              {% endfor %}
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#proj_elements').DataTable();
+} );
+
+var video = document.getElementById('video');
+var source = document.createElement('source');
+var titre_en_cours = document.getElementById('titre_en_cours');
+var titre_video_suivante = document.getElementById('titre_video_suivante');
+var proj_auteurs = document.getElementById('proj_auteurs');
+var source = document.createElement('source');
+video.appendChild(source);
+var titre = document.getElementById('titre_video');
+var current = 0;
+
+var playlist = []
+var tags = [];
+{% for r in proj.relation_proj_set.all %}
+
+    playlist[{{ forloop.counter }}] = ['{{ r.video.titre }}', '{{r.video.hd}}', '{{r.video|auteurs|striptags}}', '{{r.video.id}}']
+
+    x = [];
+	{% for r2 in r.video.relation_tag_set.all %}
+        x[{{forloop.counter}}] = [{{r2.tag.id}}, '{{r2.tag.titre}}'];
+	{% endfor %}
+    tags[{{forloop.counter}}] = x;
+{% endfor %}
+
+function launch(id) {
+	if(current>=1){
+	document.getElementById('video_'+playlist[current][3]).classList.remove('proj_video_titre_checked');}
+	current = id;
+	video.pause();
+
+		document.getElementById('video_'+playlist[id][3]).classList.add('proj_video_titre_checked');
+    titre_en_cours.innerHTML = playlist[id][0];
+    proj_auteurs.innerHTML = playlist[id][2];
+
+    if (id + 1 < playlist.length) {
+        titre_video_suivante.innerHTML = playlist[(id+1)][0]+"<img src={% static 'admin/img/droite.png' %} alt='Vaneau' class='proj_vid_suiv_img'>";
+    }
+    else {
+        titre_video_suivante.innerHTML = "...";
+    }
+
+
+	source.setAttribute('src', playlist[id][1]);
+	video.load();
+	video.play();
+}
+
+video.addEventListener('ended',next,false);
+function next(e) {
+	document.getElementById('video_'+playlist[current][3]).classList.remove('proj_video_titre_checked');
+	current += 1;
+	if (current < playlist.length) {
+		launch(current);
+	}
+}
+
+function affiche_liste(){
+	if(affiche_l==0){
+		affiche_l=1;
+		document.getElementById("ls_vid").style.display="none";
+	}
+	else {
+		affiche_l=0;
+		document.getElementById("ls_vid").style.display="unset";
+	}
+}
+
+function like(val,link){
+    $.get(link, function(data,status){
+      if(data=='lannoo'){
+        if(val==1){
+          document.getElementById('bouton_jaime').innerHTML= `
+					<a onclick="like(0,'{% url 'remove_favorite_proj' proj_id=proj.id home=0 %}')" class="lien_jaime_rouge">
+ 						<div class="titre_et_vues_vues_et_jaime_bouton_jaime_rouge">
+ 						Je n'aime plus
+ 						</div>
+ 					</a>
+					`;
+          c=parseInt(document.getElementById('proj_nb_jaime').innerHTML);
+          document.getElementById('proj_nb_jaime').innerHTML=c+1;
+        }
+        if(val==0){
+            document.getElementById('bouton_jaime').innerHTML= `
+						<a onclick="like(1,'{% url 'add_favorite_proj' proj.id %}')" class="lien_jaime_vert">
+						 <div class="titre_et_vues_vues_et_jaime_bouton_jaime_vert">
+							 J'aime
+						 </div>
+					 </a>
+				 `;
+         c=parseInt(document.getElementById('proj_nb_jaime').innerHTML);
+         document.getElementById('proj_nb_jaime').innerHTML=c-1;
+				 document.getElementById('proj_epingle_id_+{{proj.id}}').innerHTML="";
+
+        }
+      }
+    });
+}
+
+function epingle(val,link){
+  $.get(link, function(data,status){
+    if(data=='lannoo'){
+      if(val==1){
+        document.getElementById('bouton_epingle').innerHTML= `
+					<a onclick='epingle(0,"{% url "remove_epingle_proj" proj_id=proj.id home=0 %}")' class="link_epingler">
+						<img src={% static "admin/img/pin.png" %} alt="pin" class="bouton_deja_epingler">
+					</a>
+					<div class="text_epingler">
+						désépingler
+					</div>
+        `;
+
+        a= `
+        <span id='proj_epingle_id_+{{proj.id}}'>
+          <a class="lateral_bar_button_a" href="{% url 'proj' proj.id %}">
+            <div class="lateral_bar_button">
+              <div class="lateral_bar_button_text">
+                  {{ proj.titre }}
+              </div>
+            </div>
+        </a>
+        </span>`;
+
+        document.getElementById('proj_epingle_liste').innerHTML=a+document.getElementById('proj_epingle_liste').innerHTML;
+      }
+      if(val==0){
+          document.getElementById('bouton_epingle').innerHTML= `
+						<a onclick='epingle(1,"{% url "add_epingle_proj" proj.id %}")' class="link_epingler">
+							<img src={% static "admin/img/pin.png" %} alt="pin" class="bouton_epingler">
+						</a>
+						<div class="text_epingler">
+							épingler
+						</div>
+          `;
+
+          document.getElementById('proj_epingle_id_+{{proj.id}}').innerHTML="";
+      }
+    }
+  });
+}
+
+
+var affiche_l=0;
+launch(1);
+</script>
+
+{% endif %}
+{% endblock %}

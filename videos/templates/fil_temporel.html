@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% if elements %}
+
+{% load app_filters %}
+<div class="centrer_fil">
+
+
+<div class="container_fil">
+{% for p in elements %}
+  <div class="fil_ligne_div">
+
+
+    <div class="fil_description">
+        <a class="fil_description_a" href="{% url 'proj' p.id %}">
+      <div class="fil_description_date">
+        {{ p.date|date:"d/m/Y" }}
+      </div>
+      <div class="fil_description_titre">
+        {{p.titre}}
+        <br>
+        {% if p in projs_jtx %}
+        <span class="tag_search_proj" style="margin-left:0px;">PROJ</span>
+        {% endif %}
+      </div>
+      </a>
+    </div>
+
+    <div class="fil_point_barre">
+      <div class="fil_barre"></div>
+      <div class="fil_point">
+          &#9679;
+      </div>
+      <div class="fil_barre"></div>
+    </div>
+
+    <div class="fil_bloc_video">
+      <div class="bloc_video">
+
+        <a href="{% url 'proj' p.id %}">
+            <figure class="figure_liste">
+                <img class="img_vid" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Aspect_ratio_16_9_example.jpg"/>
+                <div class="legende_vid_duree">
+                      {{p|duration_proj}}
+                </div>
+
+            </figure>
+        </a>
+
+        <a href="{% url 'proj' p.id %}">
+            <div class="legende_vid_titre">
+                {{p.titre|short}}
+            </div>
+        </a>
+
+        <div class="legende_vid_auteur">
+              <a href="{% url 'jtx' 2015 %}">
+                  JTX 20{{ p | short_promo }}
+              </a>
+        </div>
+        <div class="legende_vid_auteur">
+                {{p.views}}
+               vues
+               <span class="petit_point">&#9679;</span>
+
+                {{ p.date|date:"d/m/Y" }}
+        </div>
+
+    </div>
+    </div>
+
+
+
+</div>
+
+{% if p.id == 81 %}
+<div class="svg_container_haut">
+  <svg width="50" height="50" class="svg_rupture">
+    <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="0" x2="25.19231" y1="25.67307" x1="25.19231" fill-opacity="null" stroke-opacity="null" stroke="#C8C8C8" fill="none"/>
+
+    <line stroke="#FDC500" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="20.09615" x2="39.03839" y1="30.09615" x1="29.03839" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="30" x2="29.61539" y1="19.95194" x1="19.27887" fill-opacity="null" stroke-opacity="null" stroke="#FDC500" fill="none"/>
+  <line stroke="#FDC500" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="20" x2="19.90385" y1="30" x1="9.90385" fill="none"/>
+  </svg>
+</div>
+
+<div class="container_text_rupture">
+  <div class="text_rupture">
+    <span class="new_jtx">JTX 2015</span><br>
+    <span class="old_jtx">JTX 2014</span>
+  </div>
+</div>
+
+
+
+<div class="svg_container_bas">
+  <svg width="50" height="50" class="svg_rupture">
+    <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="50" x2="25.19231" y1="25.67307" x1="25.19231" fill-opacity="null" stroke-opacity="null" stroke="#C8C8C8" fill="none"/>
+    <line stroke="#CC181E" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="20.09615" x2="39.03839" y1="30.09615" x1="29.03839" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="30" x2="29.61539" y1="19.95194" x1="19.27887" fill-opacity="null" stroke-opacity="null" stroke="#CC181E" fill="none"/>
+  <line stroke="#CC181E" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="20" x2="19.90385" y1="30" x1="9.90385" fill="none"/>
+  </svg>
+</div>
+{% endif%}
+
+{% endfor %}
+</div>
+</div>
+
+{% endif %}
+{% endblock %}

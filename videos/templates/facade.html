@@ -1,0 +1,709 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  
+    Document Title
+    =============================================
+    -->
+    <title>Binet JTX | Association télévisuelle de l'Ecole polytechnique</title>
+    <!--  
+    Favicons
+    =============================================
+    -->
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon.png' %}">
+    <meta property="og:type" content="video"/>
+    <meta property="og:title" content="Binet JTX"/>
+    <meta property="og:description" content="Binet JTX - assocation télévisuelle de l'École polytechnique"/>
+    <meta property="og:image" content="http://binet-jtx.com/videos/affiches/JTX%202016/logo%202016.png"/>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+    #video_video {
+      position: absolute;
+      margin:0px;
+      top: 0px;
+      left: 0px;
+      }
+
+      #video_text{
+        position: absolute;
+        margin: 0 auto;
+  left: 0;
+  right: 0;
+      }
+      </style>
+
+
+    <!--  
+    Stylesheets
+    =============================================
+    
+    -->
+    <!-- Default stylesheets-->
+    <link href="{% static 'assets/lib/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="{% static 'assets/lib/animate.css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/components-font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/et-line-font/et-line-font.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/flexslider/flexslider.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/magnific-popup/dist/magnific-popup.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/lib/simple-text-rotator/simpletextrotator.css' %}" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link id="color-scheme" href="{% static 'assets/css/colors/default.css' %}" rel="stylesheet">
+
+
+
+<script src="https://use.fontawesome.com/7dd50ac6cd.js"></script>
+
+
+  </head>
+  <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader">
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top one-page" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#">JTX</a>
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#totop">Accueil</a></li>
+              <li><a class="section-scroll" href="#services">Services</a></li>
+              <li><a class="section-scroll" href="#works">Portfolio</a></li>
+              <li><a class="section-scroll" href="#team"<>Equipe</a></li>
+              <li><a class="section-scroll" href="#contact">Contact</a></li>
+              <li><a class="section-scroll" href="/org">Accès polytechnicien</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="home-section home-full-height bg-dark bg-gradient" id="home">
+        <div class="titan-caption">
+          <div class="caption-content">
+
+ <div id="video_video">
+            <video id="bgvid" playsinline autoplay muted loop poster="/videos/photogroupe.jpg">
+              <source src="/videos/video-couverture-site.mp4" type="video/mp4">
+            </video>
+          </div>
+
+            <div id="video_text">
+            <div class="font-alt mb-30 titan-title-size-1">Bonjour &amp; bienvenue</div>
+            <div class="font-alt mb-40 titan-title-size-4">Nous sommes le JTX</div><a class="section-scroll btn btn-border-w btn-round font-alt mb-30 titan-title-size-1"href="#services">Explorer <i class="fa fa-angle-double-down fa-x" aria-hidden="true"></i></span></a>
+            <a class="section-scroll btn btn-border-w btn-round font-alt mb-30 titan-title-size-1"href="/org">Accès polytechnicien </span></a>
+            </div>
+
+
+        </div>
+      </section>
+      <div class="main">
+        <section class="module" id="services">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <h2 class="module-title font-alt">Qui sommes nous ?</h2>
+                <div class="module-subtitle font-serif">Le JTX est une association étudiante créative accompagnant les entreprises et les particuliers dans la conception de contenus de communication audacieux.
+Nous imaginons, conceptualisons et donnons vie à un univers pour votre entreprise, marque, produit, ou quel que soit votre projet.
+</p>
+Convaincus de la puissance de la vidéo comme outil de communication, nous créons des réalisations originales afin de vous fournir des contenus visuels animés et efficaces.</div>
+              </div>
+            </div>
+            <div class="row multi-columns-row">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-lightbulb"></span></div>
+                  <h3 class="features-title font-alt">Originalité</h3>
+                  <p>Nous réalisons des courts-métrages et nous donnons vie à vos idées disruptives.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-bike"></span></div>
+                  <h3 class="features-title font-alt">Adaptabilité</h3>
+                  <p>Nous couvrons les matches et autres évènements sportifs à haute action.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-tools"></span></div>
+                  <h3 class="features-title font-alt">Animation</h3>
+                  <p>Nous créons des animations 2D et 3D pour donner vie à vos idées.</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="features-item">
+                  <div class="features-icon"><span class="icon-genius"></span></div>
+                  <h3 class="features-title font-alt">Technologie</h3>
+                  <p>Notre matériel à la pointe de la technologie vous permettra de bénéficier d’images d’une qualité incomparable.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module bg-dark-60" data-background="/videos/photogroupe.jpg>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="video-box">
+                  <div class="video-box-icon"><a class="video-pop-up" href="/videos/derniere-presta.mp4"><span class="icon-video"></span></a></div>
+                  <div class="video-title font-alt">Dernière presta</div>
+                  <div class="video-subtitle font-alt">Regardez la vidéo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module pb-0" id="works">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Nos réalisations</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <ul class="filter font-alt" id="filters">
+                  <li><a class="current wow fadeInUp" href="#" data-filter="*">Tout</a></li>
+                  <li><a class="wow fadeInUp" href="#" data-filter=".cat1" data-wow-delay="0.2s">{{nom_cat1}}</a></li>
+                  <li><a class="wow fadeInUp" href="#" data-filter=".cat2" data-wow-delay="0.4s">{{nom_cat2}}</a></li>
+                  <li><a class="wow fadeInUp" href="#" data-filter=".cat3" data-wow-delay="0.6s">{{nom_cat3}}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <ul class="works-grid works-grid-gut works-grid-3 works-hover-w" id="works-grid">
+            <li class="work-item cat1 "><a class="video-pop-up" href="{{vid_1.hd}}">
+                <div class="work-image"><img src="{{vid_1.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_1.titre}}</h3>
+                  <div class="work-descr">{{vid_1.description}}</div>
+                </div></a></li>
+            <li class="work-item cat2"><a class="video-pop-up"  href="{{vid_4.hd}}">
+                <div class="work-image"><img src="{{vid_4.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_4.titre}}</h3>
+                  <div class="work-descr">{{vid_4.description}}</div>
+                </div></a></li>
+            <li class="work-item cat3"><a class="video-pop-up"  href="{{vid_7.hd}}">
+                <div class="work-image"><img src="{{vid_7.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_7.titre}}</h3>
+                  <div class="work-descr">{{vid_7.description}}</div>
+                </div></a></li>
+            <li class="work-item cat1"><a class="video-pop-up" href="{{vid_2.hd}}">
+                <div class="work-image"><img src="{{vid_2.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_2.titre}}</h3>
+                  <div class="work-descr">{{vid_2.description}}</div>
+                </div></a></li>
+            <li class="work-item cat2"><a class="video-pop-up" href="{{vid_5.hd}}">
+                <div class="work-image"><img src="{{vid_5.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_5.titre}}</h3>
+                  <div class="work-descr">{{vid_5.description}}</div>
+                </div></a></li>
+            <li class="work-item cat3"><a class="video-pop-up" href="{{vid_8.hd}}">
+                <div class="work-image"><img src="{{vid_8.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_8.titre}}</h3>
+                  <div class="work-descr">{{vid_8.description}}</div>
+                </div></a></li>
+            <li class="work-item cat1"><a class="video-pop-up" href="{{vid_3.hd}}">
+                <div class="work-image"><img src="{{vid_3.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_3.titre}}</h3>
+                  <div class="work-descr">{{vid_3.description}}</div>
+                </div></a></li>
+            <li class="work-item cat2"><a class="video-pop-up" href="{{vid_6.hd}}">
+                <div class="work-image"><img src="{{vid_6.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_6.titre}}</h3>
+                  <div class="work-descr">{{vid_6.description}}</div>
+                </div></a></li>
+            <li class="work-item cat3"><a class="video-pop-up" href="{{vid_9.hd}}">
+                <div class="work-image"><img src="{{vid_9.screenshot}}" alt="Portfolio Item"/></div>
+                <div class="work-caption font-alt">
+                  <h3 class="work-title">{{vid_9.titre}}</h3>
+                  <div class="work-descr">{{vid_9.description}}</div>
+                </div></a></li>
+
+
+
+          </ul>
+        </section>
+        <section class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-md-8 col-lg-6 col-lg-offset-2">
+                <div class="callout-text font-alt">
+                  <h3 class="callout-title">Vous voulez en voir plus ?</h3>
+                  <p>Vos projets nous intéressent</p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-lg-2">
+                <div class="callout-btn-box"><a class="btn btn-w btn-round" href="#contact">Contactez-nous !</a></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+
+
+        <hr class="divider-w">
+        <section class="module" id="team">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Notre Équipe</h2>
+                <div class="module-subtitle font-serif">Riches de plus d'une trentaine d'années d'existence, nos équipes mettent leur disponibilité et leurs expertises agiles à votre service.</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2 col-sm-offset-3" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/valentin.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                     </div>
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Valentin Delachaux</div>
+                    <div class="team-role">Président</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/maxime.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Maxime Fabre</div>
+                    <div class="team-role">Vice-président</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/pl.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Pierre-Louis Pousse</div>
+                    <div class="team-role">Trésorier</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/matthieu.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Mathieu Royer-Piéchaud</div>
+                    <div class="team-role">Directeur de la cellule technique</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/nicolas.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Nicolas Zucchet</div>
+                    <div class="team-role">Cellule technique - Image</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/nicolet.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Baptiste Niccolet</div>
+                    <div class="team-role">Cellule technique - 3D</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/guillaumes.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Guillaume Solignac</div>
+                    <div class="team-role">Cellule technique - Animation 2D</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/arthur.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Arthur Toussaint</div>
+                    <div class="team-role">Systèmes informatiques</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/lorenzo.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Lorenzo Laurent</div>
+                    <div class="team-role">Ingénieur son</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/jacques.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Jacques Song</div>
+                    <div class="team-role">Relations internes à l'école</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/ulysse.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Ulysse Vitoux</div>
+                    <div class="team-role">Communication</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/abdollah.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Abdollah Rida</div>
+                    <div class="team-role">Relations extérieures</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/fmf.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">François-Marie Frank</div>
+                    <div class="team-role">Community manager</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/theo.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Théo Mondou</div>
+                    <div class="team-role">Gestion événements</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/benoit.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Benoît Durand</div>
+                    <div class="team-role">Développement web</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+               <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/meryem.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Meryem Benmahdi</div>
+                    <div class="team-role">Archives</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/basile.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Basile Verdeau</div>
+                    <div class="team-role">Gestion du local</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/charles.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Charles Cougoureux</div>
+                    <div class="team-role">Humour et bon goût</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/lucas.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Lucas De Lara</div>
+                    <div class="team-role">Costumes</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/guillaumem.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Guillaume Mianné</div>
+                    <div class="team-role">Logistique</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-sm-20 wow fadeInUp col-sm-6 col-md-2" onclick="wow fadeInUp">
+                <div class="team-item">
+                  <div class="team-image"><img src="{% static 'photos-jtxmen/mark.JPG' %}" alt="Member Photo"/>
+                    <div class="team-detail">
+                      <h5 class="font-alt">Notre Devise</h5>
+                      <p class="font-serif">On innove et on disrupte</p>
+                    </div> 
+                  </div>
+                  <div class="team-descr font-alt">
+                    <div class="team-name">Mark Sandal</div>
+                    <div class="team-role">Logistique</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+                <section class="module bg-dark-60" data-background="/videos/photogroupe.jpg">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Scoreboard</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+            <div class="row multi-columns-row">
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <div class="count-item mb-sm-40">
+                  <div class="count-icon"><span class="icon-wallet"></span></div>
+                  <h3 class="count-to font-alt" data-countto="4"></h3>
+                  <h5 class="count-title font-serif">Drones cassés</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <div class="count-item mb-sm-40">
+                  <div class="count-icon"><span class="icon-wine"></span></div>
+                  <h3 class="count-to font-alt" data-countto="1536"></h3>
+                  <h5 class="count-title font-serif">Cafés consommés</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <div class="count-item mb-sm-40">
+                  <div class="count-icon"><span class="icon-camera"></span></div>
+                  <h3 class="count-to font-alt" data-countto="15273"></h3>
+                  <h5 class="count-title font-serif">Minutes filmées</h5>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3 col-lg-3">
+                <div class="count-item mb-sm-40">
+                  <div class="count-icon"><span class="icon-map-pin"></span></div>
+                  <h3 class="count-to font-alt" data-countto="15"></h3>
+                  <h5 class="count-title font-serif">Événements couverts</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="module" id="contact">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <h2 class="module-title font-alt">Dites-nous tout !</h2>
+                <div class="module-subtitle font-serif"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <form id="contactForm" role="form" method="post" action="{% url 'treat_facade'%}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label class="sr-only" for="name">Nom</label>
+                    <input class="form-control" type="text" id="name" name="name" placeholder="Votre Nom*" required="required" data-validation-required-message="Please enter your name."/>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Votre Email*" required="required" data-validation-required-message="Please enter your email address."/>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="7" id="message" name="message" placeholder="Votre Message*" required="required" data-validation-required-message="Please enter your message."></textarea>
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div class="text-center">
+                    <button class="btn btn-block btn-round btn-d" id="cfsubmit" type="submit">Envoyer</button>
+                  </div>
+                </form>
+                <div class="ajax-response font-alt" id="contactFormResponse"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">À propos du JTX</h5>
+                  <p>Email : <a href="#"> contact@jtx.polytechnique.org</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-d">
+        <footer class="footer bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="copyright font-alt">&copy; 2017&nbsp;<a href="#">JTX</a>, All Rights Reserved</p>
+              </div>
+              <div class="col-sm-6">
+                <div class="footer-social-links"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-dribbble"></i></a><a href="#"><i class="fa fa-skype"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+    <!--  
+    JavaScripts
+    =============================================
+    -->
+    <script src="{% static 'assets/lib/jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'assets/lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/lib/wow/dist/wow.js' %}"></script>
+    <script src="{% static 'assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js' %}"></script>
+    <script src="{% static 'assets/lib/isotope/dist/isotope.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/imagesloaded/imagesloaded.pkgd.js' %}"></script>
+    <script src="{% static 'assets/lib/flexslider/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'assets/lib/owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'assets/lib/smoothscroll.js' %}"></script>
+    <script src="{% static 'assets/lib/magnific-popup/dist/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js' %}"></script>
+    <script src="{% static 'assets/js/plugins.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

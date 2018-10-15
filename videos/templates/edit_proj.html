@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% if message %}
+{{message}}
+{% endif %}
+
+<div class="card" id="div_form">
+  
+  
+  
+  <h2 class="">Édition d'une vidéo</h2>
+
+<div class="card-body">
+  <form action="{% url 'edit_proj' p.id %}" id="valid_ordre" method="post" >
+  
+      {% csrf_token %}
+  
+      <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Titre</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control"  id="titre" value="{{p.titre}}" name="titre">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Screenshot</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="image" value="{{p.image}}">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Promo du JTX</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="duree" type="number" name="promo" value="{{p.promo}}" min="1991" max="2030" step="1" onkeyup="update_time()" >
+            <span id="time_fr"></span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Catégorie</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="category" id="select_category_edit_vid">
+                {% for c in categories %}
+                    <option {% if p.category == c %} selected {% endif %} value="{{c.id}}">{{c.titre}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Description</label>
+      <div class="col-sm-10">
+          <textarea class="form-control" id="" name="description">{{p.description}}</textarea>
+      </div>
+    </div>
+ 
+<hr>
+
+<h2>Modifier l'ordre des clips</h2>
+
+
+ <div class="nestable">
+    <div class="dd" id="nestable">
+        <ol class="dd-list">
+
+          {% for r in p.relation_proj_set.all %}
+
+            <li class="dd-item dd3-item" data-id="r_video_{{r.id}}" id="{{r.id}}">
+                <div class="dd-handle dd3-handle"></div>
+                <div class="dd3-content">{{r.video.titre}}</div>
+            </li>
+            
+            {% endfor %}
+
+        </ol>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% for r in p.relation_proj_set.all %}
+<div class="form-group row justify-content-center" hidden>
+  <label class="col-10 col-md-4 col-form-label">{{r.video.titre}}</label> 
+  <input class="form-control col-2" type="number" id="r_video_{{r.id}}" name ="r_video_{{r.id}}" value="{{r.ordre}}" max="999" min="-999"/>
+</div>
+{% endfor %}
+
+
+<input type="submit" value="Valider les changements" class="btn btn-success float-right"/>
+</form>
+
+</div>
+</div>
+
+
+<div  style="display:hidden;">
+  <p id="hidden_titre" style="display:inline-block;font-size:14px;color:#f1f1f1;position:relative; top:-100000px;" style="display:hidden;"></p>
+    <p id="hidden_image" style="display:inline-block;font-size:14px;color:#f1f1f1;position:relative; top:-100000px;" style="display:hidden;"></p>
+</div>
+
+
+<script>
+
+$("#valid_ordre").submit(function(event){
+
+  video_list = $(".dd3-item");
+  console.log(video_list.length);
+  for (i=0;i<video_list.length;i++){
+    console.log($("#" + $(video_list[i]).data("id")).val());
+    $("#" + $(video_list[i]).data("id")).val(i+1);
+    console.log($("#" + $(video_list[i]).data("id")).val());
+
+  }
+
+
+
+});
+
+</script>
+
+
+{% endblock %}
