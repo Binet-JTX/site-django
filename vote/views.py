@@ -12,7 +12,6 @@ def index(request):
 import time, json, hashlib
 #from urllib.urlparse import parse
 #import urlurlparse.urlparse as parse
-from urlparse import urlparse
 import urllib
 
 from rest_framework import viewsets, decorators
