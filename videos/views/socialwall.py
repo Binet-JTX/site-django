@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.core.urlresolvers import reverse
 from django.core.exceptions import PermissionDenied
+from django.views.decorators.csrf import csrf_exempt
 
 from ..models import *
 
@@ -32,7 +33,7 @@ def messageurgent(request):
 	else:
 		return HttpResponseRedirect(reverse("index"))
 
-
+@csrf_exempt
 def socialwall(request):
 
 	post = request.POST
